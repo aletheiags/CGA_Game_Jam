@@ -1,5 +1,7 @@
 extends Node
 
+var battleLocation 
+
 func loadScene(scenename, spawnpoint):
 	var children=get_node("Map").get_children()
 	for child in children:
@@ -11,5 +13,21 @@ func loadScene(scenename, spawnpoint):
 	get_node("Player/PlayerMovementBody").set_pos(sp.get_global_pos())
 	pass
 
+func goIntoBattle(unitPositions,enemyPositions,cameraPos,battleArea):
+	battleLocation = battleArea
+	get_node("Player").goIntoBattle(unitPositions,cameraPos)
+	#enemies and stuff here
+	
+func endBattle():
+	battleLocation.hasEnemy = false
+	get_node("Player").endBattle()
+
+func _fixed_process(delta):
+	if Input.is_action_pressed("ui_cancel"):
+		if get_node("Player").inBattle:
+			endBattle()			
+
 func _ready():
-	loadScene("Maps/OverWorld","StartPoint")
+	set_fixed_process(true)
+	#loadScene("Maps/OverWorld","StartPoint")
+	loadScene("Maps/Dungeon2","StartPoint")

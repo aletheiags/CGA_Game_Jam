@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://Maps/Sections/Section1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Sections/Section2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Sections/Section3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Maps/Sections/Section4.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Maps/Sections/Section5.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Images/tempCave.png" type="Texture" id=6]
+[ext_resource path="res://GameClasses/MapTransition.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 68.9084, 82.6134 )
+
+[node name="OverWorld" type="Node2D"]
+
+[node name="Sections" type="Node" parent="."]
+
+[node name="BaseSection" parent="Sections" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -250.36, -145.271 )
+hasEnemy = false
+
+[node name="BaseSection4" parent="Sections" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -265.539, 1532.02 )
+transform/scale = Vector2( 2, 2 )
+hasEnemy = false
+
+[node name="BaseSection5" parent="Sections" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 353.009, 1558.58 )
+transform/scale = Vector2( 2, 2 )
+hasEnemy = false
+
+[node name="BaseSection7" parent="Sections" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 971.558, 1550.99 )
+transform/scale = Vector2( 2, 2 )
+hasEnemy = false
+
+[node name="BaseSection1" parent="Sections" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -258.715, 972.021 )
+transform/scale = Vector2( 2, 2 )
+
+[node name="BaseSection2" parent="Sections" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 993.087, 990.567 )
+transform/scale = Vector2( 2, 2 )
+
+[node name="BaseSection 2" parent="Sections" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 359.275, -132.088 )
+
+[node name="BaseSection3" parent="Sections" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 983.024, -127.97 )
+transform/scale = Vector2( 2, 2 )
+hasEnemy = true
+
+[node name="BaseSection 3" parent="Sections" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -259.633, 417.101 )
+
+[node name="BaseSection 4" parent="Sections" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 366.36, 430.116 )
+transform/scale = Vector2( 2, 2 )
+
+[node name="BaseSection 5" parent="Sections" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 988.359, 438.286 )
+transform/scale = Vector2( 2, 2 )
+
+[node name="BaseSection6" parent="Sections" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 354.731, 1000.82 )
+transform/scale = Vector2( 2, 2 )
+
+[node name="StartPoint" type="Position2D" parent="."]
+
+transform/pos = Vector2( -96.0097, 60.1858 )
+
+[node name="Transitions" type="Node" parent="."]
+
+[node name="Cave1" type="Sprite" parent="Transitions"]
+
+editor/display_folded = true
+transform/pos = Vector2( -105.564, -144.723 )
+texture = ExtResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="Transitions/Cave1"]
+
+transform/pos = Vector2( -780.081, -992.495 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 767.024, 1033.71 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 7 )
+gotoScene = "Maps/OverWorld"
+spawnPoint = "CaveExit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/Cave1/Area2D"]
+
+transform/pos = Vector2( 767.024, 1033.71 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+

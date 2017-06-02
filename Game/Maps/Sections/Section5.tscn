@@ -1,0 +1,161 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Maps/Sections/Sections.gd" type="Script" id=1]
+[ext_resource path="res://GameClasses/BattleTransition.gd" type="Script" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0.244308, 104.908, -3.0728, -3.22913, 93.1231, -0.575455, 78.5279, 63.1129 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 306.905, 272.725, 218.124, 272.725, 233.6, 212.451, 303.647, 169.282 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 235.204, 31.827, 241.625, 221.589, 63.4458, 240.235, 63.8376, 57.264 )
+
+[node name="BaseSection" type="Polygon2D"]
+
+transform/rot = -0.0903173
+transform/scale = Vector2( 2, 2 )
+polygon = Vector2Array( 304.72, -2.58585, 305.611, 271.858, 3.42517, 274.13, 0.577789, -0.780853 )
+uv = Vector2Array(  )
+color = Color( 0.195465, 0.213131, 0.273438, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+script/script = ExtResource( 1 )
+openTop = true
+openLeft = true
+openRight = true
+openBottom = true
+hasEnemy = true
+
+[node name="Polygon2D 2" type="Polygon2D" parent="."]
+
+polygon = Vector2Array( 303.818, 169.792, 274.035, 186.037, 233.423, 213.112, 225.3, 243.796, 219.885, 271.774, 306.525, 272.676 )
+uv = Vector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+
+transform/pos = Vector2( 49.2014, 51.0459 )
+transform/rot = -181.419
+polygon = Vector2Array( 303.818, 169.792, 274.035, 186.037, 233.423, 213.112, 225.3, 243.796, 219.885, 271.774, 306.525, 272.676 )
+uv = Vector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( -260.889, -223.432 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( 0.244308, 104.908, -3.0728, -3.22913, 93.1231, -0.575455, 78.5279, 63.1129 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="CollisionPolygon2D1" type="CollisionPolygon2D" parent="StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( 303.647, 169.282, 233.6, 212.451, 218.124, 272.725, 306.905, 272.725 )
+shape_range = Vector2( 1, 1 )
+trigger = false
+
+[node name="BattleStartArea" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BattleStartArea"]
+
+build_mode = 0
+polygon = Vector2Array( 63.8376, 57.264, 63.4458, 240.235, 241.625, 221.589, 235.204, 31.827 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="EnemyPositions" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="Position2D" type="Position2D" parent="EnemyPositions"]
+
+transform/pos = Vector2( 242.356, 167.033 )
+
+[node name="Position2D1" type="Position2D" parent="EnemyPositions"]
+
+transform/pos = Vector2( 209.272, 116.859 )
+
+[node name="Position2D2" type="Position2D" parent="EnemyPositions"]
+
+transform/pos = Vector2( 148.452, 25.7734 )
+
+[node name="Position2D3" type="Position2D" parent="EnemyPositions"]
+
+transform/pos = Vector2( 187.741, 66.2798 )
+
+[node name="UnitPositions" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="Position2D" type="Position2D" parent="UnitPositions"]
+
+transform/pos = Vector2( 102.141, 70.8781 )
+
+[node name="Position2D1" type="Position2D" parent="UnitPositions"]
+
+transform/pos = Vector2( 129.96, 132.668 )
+
+[node name="Position2D2" type="Position2D" parent="UnitPositions"]
+
+transform/pos = Vector2( 160.738, 209.954 )
+
+[node name="CameraPos" type="Position2D" parent="."]
+
+
