@@ -3,6 +3,9 @@ extends Node
 export(float) var speed = 10
 
 var inBattle = false
+var path = []
+var onCol = 0
+var onRow = 0
 
 func move_units():
 	var mvector = Vector2(0,0)
@@ -56,12 +59,33 @@ func goIntoBattle(unitPositions,cameraPos):
 		i += 1
 	
 	tween.start()
+
+func nextLoc(body,somethingElse):
+	if path.size()>1:
+		path.remove(path.size()-1)
+		tweenTo()
+	
+func tweenTo():
+	var bod = get_node("PlayerMovementBody")
+	var tween = get_node("MovementTween")
+	var dis = bod.get_global_pos().distance_to(path[path.size()-1])
+	tween.interpolate_property(bod,"transform/pos",bod.get_global_pos(),path[path.size()-1],dis/(speed*100),Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	if not tween.is_connected("tween_complete",self,"nextLoc"):
+		tween.connect("tween_complete",self,"nextLoc",[],4)
+	
+	tween.start()
 	
 func _fixed_process(delta):
 	if not inBattle:
+		if onCol == -1 || onRow == -1:
+			onRow = floor(get_node("PlayerMovementBody").get_pos().y/600)
+			onCol = floor(get_node("PlayerMovementBody").get_pos().x/600)
+			print(onRow)
+			print(onCol)
 		move_units()
 		var units = get_node("Units").get_children()
 		for i in range(units.size()):
+			get_node("Units").get_child(0).set_pos(get_node("PlayerMovementBody").get_pos())
 			if i != 0:
 				var gotoLoc = units[i-1].get_node("Rotater/FollowerTarget").get_global_pos()
 				var mLoc = units[i].get_pos()

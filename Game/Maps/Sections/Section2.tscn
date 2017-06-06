@@ -1,64 +1,74 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://Maps/Sections/Sections.gd" type="Script" id=1]
 [ext_resource path="res://GameClasses/BattleTransition.gd" type="Script" id=2]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 17.727, 51.5646, -2.12805, 69.6147, -0.323059, -8.00056 )
+extents = Vector2( 148.909, 137.929 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 306.528, 269.97, 218.985, 269.97, 234.328, 213.113, 271.33, 184.232 )
+points = Vector2Array( 17.727, 51.5646, -2.12805, 69.6147, -0.323059, -8.00056 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 304.723, -0.780548, 306.528, 269.97, 271.33, 184.232, 257.793, 15.4645 )
+points = Vector2Array( 306.528, 269.97, 218.985, 269.97, 234.328, 213.113, 271.33, 184.232 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 103.465, 45.2471, 39.3871, 58.7846, 17.727, 51.5646, -0.323059, -8.00056, 172.055, 6.43948 )
+points = Vector2Array( 304.723, -0.780548, 306.528, 269.97, 271.33, 184.232, 257.793, 15.4645 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 172.055, 6.43948, -0.323059, -8.00056, 304.723, -0.780548 )
+points = Vector2Array( 103.465, 45.2471, 39.3871, 58.7846, 17.727, 51.5646, -0.323059, -8.00056, 172.055, 6.43948 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 172.055, 6.43948, 304.723, -0.780548, 257.793, 15.4645 )
+points = Vector2Array( 172.055, 6.43948, -0.323059, -8.00056, 304.723, -0.780548 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
+points = Vector2Array( 172.055, 6.43948, 304.723, -0.780548, 257.793, 15.4645 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+
+custom_solver_bias = 0.0
 points = Vector2Array( 95.8791, 53.9903, 251.097, 137.32, 147.153, 270.08, 34.3251, 260.368 )
 
-[node name="BaseSection" type="Polygon2D"]
+[sub_resource type="NavigationPolygon" id=9]
+
+vertices = Vector2Array( 228.896, 211.651, 216.897, 275.276, 2.62187, 277.328, -0.415757, 71.2594, 22.0614, 54.7472, 39.5302, 62.8658, 110.21, 49.1985, 172.564, 9.93893, 256.68, 18.7636, 268.739, 181.726 )
+polygons = [ IntArray( 0, 1, 2, 3, 4, 5 ), IntArray( 0, 5, 6 ), IntArray( 0, 6, 7, 8, 9 ) ]
+outlines = [ Vector2Array( -0.415757, 71.2594, 22.0614, 54.7472, 39.5302, 62.8658, 110.21, 49.1985, 172.564, 9.93893, 256.68, 18.7636, 268.739, 181.726, 228.896, 211.651, 216.897, 275.276, 2.62187, 277.328 ) ]
+
+[node name="BaseSection" type="Area2D"]
 
 transform/rot = -0.274444
 transform/scale = Vector2( 2, 2 )
-polygon = Vector2Array( 304.72, -2.58585, 305.611, 271.858, 3.42517, 274.13, 0.577789, -0.780853 )
-uv = Vector2Array(  )
-color = Color( 0.195465, 0.213131, 0.273438, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 153.417, 135.628 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
 script/script = ExtResource( 1 )
-openTop = null
-openLeft = true
-openRight = false
-openBottom = true
-hasEnemy = null
+openNorth = false
+openWest = true
+openEast = false
+openSouth = true
+hasEnemy = false
+row = 0
+col = 0
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 
@@ -106,23 +116,24 @@ invert/border = 100.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 2 )
+shapes/1/shape = SubResource( 3 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 3 )
+shapes/2/shape = SubResource( 4 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/2/trigger = false
-shapes/3/shape = SubResource( 4 )
+shapes/3/shape = SubResource( 5 )
 shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/3/trigger = false
-shapes/4/shape = SubResource( 5 )
+shapes/4/shape = SubResource( 6 )
 shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/4/trigger = false
-shapes/5/shape = SubResource( 6 )
+shapes/5/shape = SubResource( 7 )
 shapes/5/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/5/trigger = false
 collision/layers = 1
@@ -177,8 +188,9 @@ transform/pos = Vector2( 55.0527, 92.9582 )
 
 [node name="BattleStartArea" type="Area2D" parent="."]
 
+editor/display_folded = true
 input/pickable = true
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -197,5 +209,25 @@ trigger = false
 [node name="CameraPos" type="Position2D" parent="."]
 
 transform/pos = Vector2( 143.165, 135.678 )
+
+[node name="Navigation" type="NavigationPolygonInstance" parent="."]
+
+navpoly = SubResource( 9 )
+enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 153.417, 135.628 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="WestExit" type="Position2D" parent="."]
+
+transform/pos = Vector2( 14.0994, 160.902 )
+
+[node name="SouthExit" type="Position2D" parent="."]
+
+transform/pos = Vector2( 142.729, 258.714 )
 
 

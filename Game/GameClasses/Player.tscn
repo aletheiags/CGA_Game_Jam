@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://GameClasses/Player.gd" type="Script" id=1]
-[ext_resource path="res://GameClasses/Unit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://GameClasses/Unit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -11,7 +12,7 @@ extents = Vector2( 30.2468, 28.6142 )
 [node name="Player" type="Node"]
 
 script/script = ExtResource( 1 )
-speed = 10
+speed = 5.0
 
 [node name="PlayerMovementBody" type="KinematicBody2D" parent="."]
 
@@ -56,14 +57,26 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
+[node name="Sprite" type="Sprite" parent="PlayerMovementBody"]
+
+transform/scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
 [node name="Units" type="Node" parent="."]
 
 editor/display_folded = true
 
-[node name="Unit" parent="Units" instance=ExtResource( 2 )]
+[node name="Unit" parent="Units" instance=ExtResource( 3 )]
 
-[node name="Unit 2" parent="Units" instance=ExtResource( 2 )]
+[node name="Unit 2" parent="Units" instance=ExtResource( 3 )]
 
-[node name="Unit 3" parent="Units" instance=ExtResource( 2 )]
+[node name="Unit 3" parent="Units" instance=ExtResource( 3 )]
+
+[node name="MovementTween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 

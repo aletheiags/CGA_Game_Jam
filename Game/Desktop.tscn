@@ -16,8 +16,8 @@ texture = ExtResource( 2 )
 
 [node name="GameWindow" type="Panel" parent="."]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
+focus/ignore_mouse = true
+focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 266.0
@@ -39,12 +39,22 @@ render_target/gen_mipmaps = false
 render_target/update_mode = 2
 audio_listener/enable_2d = false
 audio_listener/enable_3d = false
-physics/object_picking = false
+physics/object_picking = true
 gui/disable_input = false
 
 [node name="Game" parent="GameWindow/Viewport" instance=ExtResource( 3 )]
 
 [node name="Sprite 2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 745.801, 161.004 )
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 745.801, 161.004 )
+texture = ExtResource( 4 )
+
+[node name="Sprite4" type="Sprite" parent="."]
 
 transform/pos = Vector2( 745.801, 161.004 )
 texture = ExtResource( 4 )
