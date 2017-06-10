@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Maps/Sections/Sections.gd" type="Script" id=1]
+[ext_resource path="res://Images/Tilesets/BackgroundWhite.png" type="Texture" id=2]
+[ext_resource path="res://Maps/Tilesets/Dungeon.tres" type="TileSet" id=3]
+
+[node name="BaseSection" type="Node2D"]
+
+script/script = ExtResource( 1 )
+openNorth = true
+openWest = true
+openEast = true
+openSouth = true
+hasEnemy = false
+
+[node name="Background" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+offset = Vector2( 160, 160 )
+
+[node name="TileMap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 3 )
+cell/size = Vector2( 8, 8 )
+cell/quadrant_size = 8
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 196615, 9, 196636, 9, 458759, 5, 458780, 5, 1376263, 9, 1376284, 9, 1638407, 5, 1638428, 5 )
+
+

@@ -1,162 +1,58 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Maps/Sections/Sections.gd" type="Script" id=1]
-[ext_resource path="res://GameClasses/BattleTransition.gd" type="Script" id=2]
+[ext_resource path="res://Images/Tilesets/BackgroundWhite.png" type="Texture" id=2]
+[ext_resource path="res://GameClasses/BattleTransition.gd" type="Script" id=3]
+[ext_resource path="res://Maps/Tilesets/Dungeon.tres" type="TileSet" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 151.783, 140.016 )
-
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0.244308, 104.908, -3.0728, -3.22913, 93.1231, -0.575455, 78.5279, 63.1129 )
+points = Vector2Array( 245.154, 64.343, 239.404, 226.862, 64.5014, 207.495, 69.1171, 48.7753 )
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[node name="BaseSection" type="Node2D"]
 
-custom_solver_bias = 0.0
-points = Vector2Array( 306.905, 272.725, 218.124, 272.725, 233.6, 212.451, 303.647, 169.282 )
-
-[sub_resource type="ConvexPolygonShape2D" id=4]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 235.204, 31.827, 241.625, 221.589, 63.4458, 240.235, 63.8376, 57.264 )
-
-[sub_resource type="NavigationPolygon" id=5]
-
-vertices = Vector2Array( 81.5561, 62.5022, 98.1081, -3.22082, 305.377, -3.54754, 305.638, 162.082, 231.688, 209.39, 217.909, 273.258, 1.38849, 274.524, 0.200654, 107.971 )
-polygons = [ IntArray( 0, 1, 2, 3, 4 ), IntArray( 4, 5, 6, 7, 0 ) ]
-outlines = [ Vector2Array( 98.1081, -3.22082, 81.5561, 62.5022, 0.200654, 107.971, 1.38849, 274.524, 217.909, 273.258, 231.688, 209.39, 305.638, 162.082, 305.377, -3.54754 ) ]
-
-[node name="BaseSection" type="Area2D"]
-
-transform/rot = -0.0903173
-transform/scale = Vector2( 2, 2 )
-input/pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 151.966, 136.706 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
 script/script = ExtResource( 1 )
 openNorth = true
 openWest = true
 openEast = true
 openSouth = true
 hasEnemy = false
-row = 0
-col = 0
 
-[node name="Polygon2D 2" type="Polygon2D" parent="."]
+[node name="Background" type="Sprite" parent="."]
 
-polygon = Vector2Array( 303.818, 169.792, 274.035, 186.037, 233.423, 213.112, 225.3, 243.796, 219.885, 271.774, 306.525, 272.676 )
-uv = Vector2Array(  )
-color = Color( 0, 0, 0, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
-[node name="Polygon2D3" type="Polygon2D" parent="."]
-
-transform/pos = Vector2( 49.2014, 51.0459 )
-transform/rot = 178.581
-polygon = Vector2Array( 303.818, 169.792, 274.035, 186.037, 233.423, 213.112, 225.3, 243.796, 219.885, 271.774, 306.525, 272.676 )
-uv = Vector2Array(  )
-color = Color( 0, 0, 0, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( -260.889, -223.432 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-editor/display_folded = true
-input/pickable = false
-shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-shapes/1/shape = SubResource( 3 )
-shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/1/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-
-build_mode = 0
-polygon = Vector2Array( 0.244308, 104.908, -3.0728, -3.22913, 93.1231, -0.575455, 78.5279, 63.1129 )
-shape_range = Vector2( 0, 0 )
-trigger = false
-
-[node name="CollisionPolygon2D1" type="CollisionPolygon2D" parent="StaticBody2D"]
-
-build_mode = 0
-polygon = Vector2Array( 303.647, 169.282, 233.6, 212.451, 218.124, 272.725, 306.905, 272.725 )
-shape_range = Vector2( 1, 1 )
-trigger = false
-
-[node name="BattleStartArea" type="Area2D" parent="."]
-
-input/pickable = true
-shapes/0/shape = SubResource( 4 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-script/script = ExtResource( 2 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BattleStartArea"]
-
-build_mode = 0
-polygon = Vector2Array( 63.8376, 57.264, 63.4458, 240.235, 241.625, 221.589, 235.204, 31.827 )
-shape_range = Vector2( 0, 0 )
-trigger = false
+texture = ExtResource( 2 )
+offset = Vector2( 160, 160 )
 
 [node name="EnemyPositions" type="Node2D" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 
 [node name="Position2D" type="Position2D" parent="EnemyPositions"]
 
-transform/pos = Vector2( 242.356, 167.033 )
+transform/pos = Vector2( 230.138, 109.203 )
 
 [node name="Position2D1" type="Position2D" parent="EnemyPositions"]
 
-transform/pos = Vector2( 209.272, 116.859 )
+transform/pos = Vector2( 183.208, 187.721 )
 
 [node name="Position2D2" type="Position2D" parent="EnemyPositions"]
 
-transform/pos = Vector2( 148.452, 25.7734 )
+transform/pos = Vector2( 119.13, 72.2002 )
 
 [node name="Position2D3" type="Position2D" parent="EnemyPositions"]
 
-transform/pos = Vector2( 187.741, 66.2798 )
+transform/pos = Vector2( 212.991, 53.2477 )
 
 [node name="UnitPositions" type="Node2D" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 
 [node name="Position2D" type="Position2D" parent="UnitPositions"]
 
-transform/pos = Vector2( 102.141, 70.8781 )
+transform/pos = Vector2( 45.1251, 92.0553 )
 
 [node name="Position2D1" type="Position2D" parent="UnitPositions"]
 
@@ -164,37 +60,48 @@ transform/pos = Vector2( 129.96, 132.668 )
 
 [node name="Position2D2" type="Position2D" parent="UnitPositions"]
 
-transform/pos = Vector2( 160.738, 209.954 )
+transform/pos = Vector2( 94.7628, 198.551 )
+
+[node name="BattleStartArea" type="Area2D" parent="."]
+
+editor/display_folded = true
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BattleStartArea"]
+
+build_mode = 0
+polygon = Vector2Array( 69.1171, 48.7753, 64.5014, 207.495, 239.404, 226.862, 245.154, 64.343 )
+shape_range = Vector2( 0, 0 )
+trigger = false
 
 [node name="CameraPos" type="Position2D" parent="."]
 
-[node name="Navigation" type="NavigationPolygonInstance" parent="."]
+transform/pos = Vector2( 148.71, 168.514 )
 
-navpoly = SubResource( 5 )
-enabled = true
+[node name="TileMap" type="TileMap" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-
-transform/pos = Vector2( 151.966, 136.706 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="EastExit" type="Position2D" parent="."]
-
-transform/pos = Vector2( 291.671, 126.308 )
-
-[node name="WestExit" type="Position2D" parent="."]
-
-transform/pos = Vector2( 11.3531, 158.21 )
-
-[node name="SouthExit" type="Position2D" parent="."]
-
-transform/pos = Vector2( 156.79, 261.615 )
-
-[node name="NorthExit" type="Position2D" parent="."]
-
-transform/pos = Vector2( 157.321, 11.7811 )
-transform/scale = Vector2( 1, 0.999999 )
+mode = 0
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 8, 8 )
+cell/quadrant_size = 8
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 4, 2, 28, 4, 786441, 5, 786445, 4, 786452, 4, 786460, 2, 1048604, 5, 1179657, 5, 2031616, 10, 2228224, 4, 2228232, 4, 2228256, 4 )
 
 

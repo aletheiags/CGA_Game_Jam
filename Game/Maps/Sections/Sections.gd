@@ -1,14 +1,16 @@
-extends Area2D
+extends Node2D
 
 export(bool) var openNorth = false
 export(bool) var openWest = false
 export(bool) var openEast =false
 export(bool) var openSouth = false
 export(bool) var hasEnemy = false
-export(int) var row = 0
-export(int) var col = 0
+var row = 0
+var col = 0
 
 ##The issue is that this section is not nessessarly the one that the units are in. By doing this we need to determine which one is clicked in
+
+###THIS IS NOT USED, BUT I DIDN't WANT TO LOSE THE CODE
 func clickEvent(viewport, event, shape_idx):
 	if event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_LEFT && event.pressed:
 
@@ -74,6 +76,4 @@ func bodyExited(body):
 			body.get_parent().onRow = -1
 	
 func _ready():
-	connect("input_event",self,"clickEvent")
-	connect("body_enter",self,"bodyEntered")
-	connect("body_enter",self,"bodyExited")
+	

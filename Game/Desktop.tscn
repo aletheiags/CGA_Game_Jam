@@ -9,9 +9,9 @@
 
 script/script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="GameWindowBorder" type="Sprite" parent="."]
 
-transform/pos = Vector2( 514.487, 543.837 )
+transform/pos = Vector2( 418.82, 430.548 )
 texture = ExtResource( 2 )
 
 [node name="GameWindow" type="Panel" parent="."]
@@ -20,10 +20,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 266.0
-margin/top = 391.0
-margin/right = 756.0
-margin/bottom = 721.0
+margin/left = 173.0
+margin/top = 280.0
+margin/right = 663.0
+margin/bottom = 610.0
 
 [node name="Viewport" type="Viewport" parent="GameWindow"]
 
@@ -44,19 +44,9 @@ gui/disable_input = false
 
 [node name="Game" parent="GameWindow/Viewport" instance=ExtResource( 3 )]
 
-[node name="Sprite 2" type="Sprite" parent="."]
+[node name="DungeonSection" type="Sprite" parent="."]
 
-transform/pos = Vector2( 745.801, 161.004 )
-texture = ExtResource( 4 )
-
-[node name="Sprite3" type="Sprite" parent="."]
-
-transform/pos = Vector2( 745.801, 161.004 )
-texture = ExtResource( 4 )
-
-[node name="Sprite4" type="Sprite" parent="."]
-
-transform/pos = Vector2( 745.801, 161.004 )
+transform/pos = Vector2( 861.608, 128.276 )
 texture = ExtResource( 4 )
 
 

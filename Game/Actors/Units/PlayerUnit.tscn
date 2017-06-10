@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Actors/Units/PlayerUnit.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="Unit" type="Node"]
+
+script/script = ExtResource( 1 )
+maxPSU = null
+CPU = null
+maxRam = null
+PrimaryAbility = null
+SecondaryAbility = null
+SpecialAbility = null
+
+[node name="UnitPortrait" type="Sprite" parent="."]
+
+[node name="UnitBody" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="UnitBody"]
+
+transform/scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="Rotater" type="Node2D" parent="UnitBody"]
+
+transform/rot = 90.0
+
+[node name="FollowerTarget" type="Position2D" parent="UnitBody/Rotater"]
+
+transform/pos = Vector2( 24.7155, -9.53674e-07 )
+
+

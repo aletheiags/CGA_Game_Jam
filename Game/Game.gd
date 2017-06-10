@@ -30,4 +30,4 @@ func _fixed_process(delta):
 func _ready():
 	set_fixed_process(true)
 	#loadScene("Maps/OverWorld","StartPoint")
-	loadScene("Maps/Dungeon2","StartPoint")
+	loadScene("Maps/Dungeon","StartPoint")

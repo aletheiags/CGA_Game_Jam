@@ -2,17 +2,17 @@
 
 [ext_resource path="res://GameClasses/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://GameClasses/Unit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actors/Units/PlayerUnit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 30.2468, 28.6142 )
+extents = Vector2( 6.33423, 5.23325 )
 
 [node name="Player" type="Node"]
 
 script/script = ExtResource( 1 )
-speed = 5.0
+speed = 1.0
 
 [node name="PlayerMovementBody" type="KinematicBody2D" parent="."]
 
@@ -35,7 +35,7 @@ _update_shape_index = 0
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 1.5, 1.5 )
+zoom = Vector2( 0.3, 0.3 )
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000
@@ -44,7 +44,7 @@ limit/smoothed = true
 drag_margin/h_enabled = true
 drag_margin/v_enabled = true
 smoothing/enable = true
-smoothing/speed = 5.0
+smoothing/speed = 10.0
 drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
@@ -64,13 +64,11 @@ texture = ExtResource( 2 )
 
 [node name="Units" type="Node" parent="."]
 
-editor/display_folded = true
-
 [node name="Unit" parent="Units" instance=ExtResource( 3 )]
 
-[node name="Unit 2" parent="Units" instance=ExtResource( 3 )]
+[node name="Unit1" parent="Units" instance=ExtResource( 3 )]
 
-[node name="Unit 3" parent="Units" instance=ExtResource( 3 )]
+[node name="Unit2" parent="Units" instance=ExtResource( 3 )]
 
 [node name="MovementTween" type="Tween" parent="."]
 
