@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://GameClasses/Player.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Actors/Units/PlayerUnit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actors/Units/PlayerUnit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Images/Sprites/Data.png" type="Texture" id=3]
+[ext_resource path="res://Images/Sprites/Pentium.png" type="Texture" id=4]
+[ext_resource path="res://Images/Sprites/MOBO.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -57,18 +59,25 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="Sprite" type="Sprite" parent="PlayerMovementBody"]
-
-transform/scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 2 )
-
 [node name="Units" type="Node" parent="."]
 
-[node name="Unit" parent="Units" instance=ExtResource( 3 )]
+[node name="Data" parent="Units" instance=ExtResource( 2 )]
 
-[node name="Unit1" parent="Units" instance=ExtResource( 3 )]
+[node name="Sprite" parent="Units/Data/UnitBody"]
 
-[node name="Unit2" parent="Units" instance=ExtResource( 3 )]
+texture = ExtResource( 3 )
+
+[node name="Pentium" parent="Units" instance=ExtResource( 2 )]
+
+[node name="Sprite" parent="Units/Pentium/UnitBody"]
+
+texture = ExtResource( 4 )
+
+[node name="Mobo" parent="Units" instance=ExtResource( 2 )]
+
+[node name="Sprite" parent="Units/Mobo/UnitBody"]
+
+texture = ExtResource( 5 )
 
 [node name="MovementTween" type="Tween" parent="."]
 
@@ -78,3 +87,6 @@ playback/repeat = false
 playback/speed = 1.0
 
 
+[editable path="Units/Data"]
+[editable path="Units/Pentium"]
+[editable path="Units/Mobo"]

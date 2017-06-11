@@ -23,6 +23,7 @@ hasEnemy = false
 
 texture = ExtResource( 2 )
 offset = Vector2( 160, 160 )
+modulate = Color( 1, 0, 1, 1 )
 
 [node name="EnemyPositions" type="Node2D" parent="."]
 

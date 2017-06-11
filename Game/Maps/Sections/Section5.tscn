@@ -23,11 +23,11 @@ hasEnemy = false
 
 texture = ExtResource( 2 )
 offset = Vector2( 160, 160 )
+modulate = Color( 1, 0, 1, 1 )
 
 [node name="EnemyPositions" type="Node2D" parent="."]
 
 editor/display_folded = true
-visibility/visible = false
 
 [node name="Position2D" type="Position2D" parent="EnemyPositions"]
 
@@ -48,7 +48,6 @@ transform/pos = Vector2( 212.991, 53.2477 )
 [node name="UnitPositions" type="Node2D" parent="."]
 
 editor/display_folded = true
-visibility/visible = false
 
 [node name="Position2D" type="Position2D" parent="UnitPositions"]
 

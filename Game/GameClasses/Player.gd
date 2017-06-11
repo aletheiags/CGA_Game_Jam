@@ -51,9 +51,7 @@ func goIntoBattle(unitPositions):
 	var i = 0
 	var tween = cam.get_node("CameraTween")
 	tween.interpolate_property(cam,"zoom",Vector2(0.5,0.5),Vector2(0.4,0.4),1,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-
 	
-
 	for u in get_node("Units").get_children():
 		tween.interpolate_property(u.get_node("UnitBody"),'transform/pos',u.get_node("UnitBody").get_pos(),unitPositions[i].get_global_pos(),1,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		i += 1
