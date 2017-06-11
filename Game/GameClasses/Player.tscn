@@ -12,7 +12,7 @@ extents = Vector2( 6.33423, 5.23325 )
 [node name="Player" type="Node"]
 
 script/script = ExtResource( 1 )
-speed = 1.0
+speed = 2.0
 
 [node name="PlayerMovementBody" type="KinematicBody2D" parent="."]
 
@@ -35,20 +35,20 @@ _update_shape_index = 0
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 0.3, 0.3 )
+zoom = Vector2( 0.5, 0.5 )
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000
 limit/bottom = 10000000
-limit/smoothed = true
+limit/smoothed = false
 drag_margin/h_enabled = true
 drag_margin/v_enabled = true
 smoothing/enable = true
 smoothing/speed = 10.0
-drag_margin/left = 0.2
-drag_margin/top = 0.2
-drag_margin/right = 0.2
-drag_margin/bottom = 0.2
+drag_margin/left = 0.01
+drag_margin/top = 0.01
+drag_margin/right = 0.01
+drag_margin/bottom = 0.01
 
 [node name="CameraTween" type="Tween" parent="PlayerMovementBody/Camera2D"]
 

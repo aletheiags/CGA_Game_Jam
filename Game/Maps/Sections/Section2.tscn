@@ -80,10 +80,6 @@ polygon = Vector2Array( 69.1171, 48.7753, 64.5014, 207.495, 239.404, 226.862, 24
 shape_range = Vector2( 0, 0 )
 trigger = false
 
-[node name="CameraPos" type="Position2D" parent="."]
-
-transform/pos = Vector2( 148.71, 168.514 )
-
 [node name="TileMap" type="TileMap" parent="."]
 
 mode = 0

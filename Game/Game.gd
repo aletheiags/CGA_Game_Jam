@@ -13,9 +13,9 @@ func loadScene(scenename, spawnpoint):
 	get_node("Player/PlayerMovementBody").set_pos(sp.get_global_pos())
 	pass
 
-func goIntoBattle(unitPositions,enemyPositions,cameraPos,battleArea):
+func goIntoBattle(unitPositions,enemyPositions,battleArea):
 	battleLocation = battleArea
-	get_node("Player").goIntoBattle(unitPositions,cameraPos)
+	get_node("Player").goIntoBattle(unitPositions)
 	#enemies and stuff here
 	
 func endBattle():

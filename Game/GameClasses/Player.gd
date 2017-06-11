@@ -41,19 +41,19 @@ func endBattle():
 	inBattle = false
 	var cam = get_node("PlayerMovementBody/Camera2D")
 	var tween = cam.get_node("CameraTween")
-	tween.interpolate_property(cam,"transform/pos",cam.get_pos(),Vector2(0,0),1,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.interpolate_property(cam,"zoom",Vector2(0.7,0.7),Vector2(1.5,1.5),1,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	#tween.interpolate_property(cam,"transform/pos",cam.get_pos(),Vector2(0,0),1,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(cam,"zoom",Vector2(0.4,0.4),Vector2(0.5,0.5),1,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 	
-func goIntoBattle(unitPositions,cameraPos):
+func goIntoBattle(unitPositions):
 	inBattle = true
 	var cam = get_node("PlayerMovementBody/Camera2D")
 	var i = 0
 	var tween = cam.get_node("CameraTween")
-	tween.interpolate_property(cam,"zoom",Vector2(1.5,1.5),Vector2(0.7,0.7),1,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.interpolate_property(cam,"transform/pos",cam.get_pos(),cameraPos.get_pos(),1,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(cam,"zoom",Vector2(0.5,0.5),Vector2(0.4,0.4),1,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+
 	
-	#cam.set_zoom(Vector2(1,1))
+
 	for u in get_node("Units").get_children():
 		tween.interpolate_property(u.get_node("UnitBody"),'transform/pos',u.get_node("UnitBody").get_pos(),unitPositions[i].get_global_pos(),1,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		i += 1

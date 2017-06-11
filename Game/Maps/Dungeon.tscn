@@ -8,6 +8,8 @@ script/script = ExtResource( 1 )
 tileHeight = 320
 tileWidth = 320
 dungeonSize = 16
+encounters = 10
+TotalUniqueSections = 5
 
 [node name="Navigation" type="Navigation2D" parent="."]
 

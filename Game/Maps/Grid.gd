@@ -3,6 +3,9 @@ extends Node2D
 export(int) var tileHeight = 100
 export(int) var tileWidth = 100 
 export(int) var dungeonSize = 16
+export(int) var encounters = 10
+export(int) var TotalUniqueSections = 5
+
 var grid = {}
 var baseTiles = []
 var openSides = {
@@ -75,8 +78,11 @@ func build_dungeon():
 		"North":0,
 		"South":0
 	}
-		
+	
+	var possEncounter = []
+	
 	for g in grid:
+		possEncounter.append(g)
 		if grid[g].col > extents.East:
 			extents.East = grid[g].col
 		if grid[g].col < extents.West:
@@ -85,6 +91,7 @@ func build_dungeon():
 			extents.North = grid[g].row
 		if grid[g].row > extents.South:
 			extents.South = grid[g].row
+		
 	
 
 	extents.East += 1
@@ -108,7 +115,16 @@ func build_dungeon():
 			r += 1
 		c += 1
 	
-	
+	i = 0
+	while i < encounters:
+		var loci = possEncounter[randi()%possEncounter.size()-1]
+		
+		grid[loci].hasEnemy = true
+		
+		possEncounter.erase(loci)
+		
+		i += 1
+		
 func setup():
 	var i = 1	
 	while i <= 5:
