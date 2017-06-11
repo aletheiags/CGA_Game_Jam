@@ -15,7 +15,7 @@ points = Vector2Array( 268.349, 135.616, 251.108, 233.315, 180.707, 257.74, 81.5
 script/script = ExtResource( 1 )
 openNorth = true
 openWest = false
-openEast = true
+openEast = false
 openSouth = true
 hasEnemy = false
 
@@ -45,8 +45,6 @@ transform/pos = Vector2( 135.653, 190.013 )
 transform/pos = Vector2( 103.08, 71.207 )
 
 [node name="UnitPositions" type="Node2D" parent="."]
-
-editor/display_folded = true
 
 [node name="Position2D" type="Position2D" parent="UnitPositions"]
 
@@ -96,6 +94,6 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 0, 9, 4, 2, 32, 0, 36, 9, 262144, 6, 262180, 6, 655360, 6, 655396, 6, 786460, 2, 1048576, 4, 1048584, 4, 1310720, 7, 1703936, 2, 1966080, 0, 2097188, 7 )
+tile_data = IntArray( 0, 9, 4, 2, 32, 0, 36, 9, 262144, 6, 262180, 6, 655360, 6, 655396, 6, 1048576, 4, 1048584, 4, 1048608, 7, 1048612, 7, 1310720, 7, 1441824, 7, 1441828, 7, 1703936, 2, 1835044, 7, 1966080, 0, 2097152, 7, 2097188, 7 )
 
 
