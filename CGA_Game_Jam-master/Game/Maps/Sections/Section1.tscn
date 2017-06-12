@@ -1,0 +1,102 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Maps/Sections/Sections.gd" type="Script" id=1]
+[ext_resource path="res://Images/Tilesets/BackgroundWhite.png" type="Texture" id=2]
+[ext_resource path="res://GameClasses/BattleTransition.gd" type="Script" id=3]
+[ext_resource path="res://Maps/Tilesets/Dungeon.tres" type="TileSet" id=4]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 245.154, 64.343, 239.404, 226.862, 64.5014, 207.495, 69.1171, 48.7753 )
+
+[node name="BaseSection" type="Node2D"]
+
+script/script = ExtResource( 1 )
+openNorth = false
+openWest = true
+openEast = true
+openSouth = true
+hasEnemy = false
+
+[node name="Background" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+offset = Vector2( 160, 160 )
+modulate = Color( 1, 0, 1, 1 )
+
+[node name="EnemyPositions" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="Position2D" type="Position2D" parent="EnemyPositions"]
+
+transform/pos = Vector2( 230.138, 109.203 )
+
+[node name="Position2D1" type="Position2D" parent="EnemyPositions"]
+
+transform/pos = Vector2( 183.208, 187.721 )
+
+[node name="Position2D2" type="Position2D" parent="EnemyPositions"]
+
+transform/pos = Vector2( 119.13, 72.2002 )
+
+[node name="Position2D3" type="Position2D" parent="EnemyPositions"]
+
+transform/pos = Vector2( 212.991, 53.2477 )
+
+[node name="UnitPositions" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="Position2D" type="Position2D" parent="UnitPositions"]
+
+transform/pos = Vector2( 45.1251, 92.0553 )
+
+[node name="Position2D1" type="Position2D" parent="UnitPositions"]
+
+transform/pos = Vector2( 129.96, 132.668 )
+
+[node name="Position2D2" type="Position2D" parent="UnitPositions"]
+
+transform/pos = Vector2( 94.7628, 198.551 )
+
+[node name="BattleStartArea" type="Area2D" parent="."]
+
+editor/display_folded = true
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BattleStartArea"]
+
+build_mode = 0
+polygon = Vector2Array( 69.1171, 48.7753, 64.5014, 207.495, 239.404, 226.862, 245.154, 64.343 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="TileMap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 8, 8 )
+cell/quadrant_size = 8
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 0, 9, 4, 2, 8, 0, 16, 3, 24, 0, 32, 0, 36, 9, 262144, 6, 262180, 6, 655360, 6, 655396, 6 )
+
+
