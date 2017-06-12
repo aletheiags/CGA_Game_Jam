@@ -29,6 +29,8 @@ func loadScene(scenename, spawnpoint):
 		c.connect("died",self,"unit_died")
 	
 func goIntoBattle(unitPositions,enemyPositions,battleArea):
+	get_tree().get_root().get_node("Desktop/Sounds/Dungeon").stop()
+	get_tree().get_root().get_node("Desktop/Sounds/Battle").play()
 	battleLocation = battleArea
 	get_node("Player").goIntoBattle(unitPositions)
 	
@@ -61,7 +63,10 @@ func battleWon():
 func endBattle():
 	battleLocation.hasEnemy = false
 	get_node("Player").endBattle()
-
+	get_tree().get_root().get_node("Desktop/Sounds/Win").play()
+	get_tree().get_root().get_node("Desktop/Sounds/Dungeon").play()
+	get_tree().get_root().get_node("Desktop/Sounds/Battle").stop()
+	
 func _fixed_process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		if get_node("Player").inBattle:
@@ -75,6 +80,7 @@ func _ready():
 	set_fixed_process(true)
 	#loadScene("Maps/OverWorld","StartPoint")
 	loadScene("Maps/Dungeon","StartPoint")
+	get_tree().get_root().get_node("Desktop/Sounds/Dungeon").play()
 
 #These are all battle function
 func startBattle():
