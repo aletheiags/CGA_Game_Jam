@@ -6,9 +6,11 @@
 [node name="Unit" type="Node"]
 
 script/script = ExtResource( 1 )
+unitName = null
 maxPSU = null
 CPU = null
 maxRam = null
+baseAttackPercentage = 40
 PrimaryAbility = null
 SecondaryAbility = null
 SpecialAbility = null
@@ -16,8 +18,6 @@ SpecialAbility = null
 [node name="UnitPortrait" type="Sprite" parent="."]
 
 [node name="UnitBody" type="Node2D" parent="."]
-
-editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="UnitBody"]
 

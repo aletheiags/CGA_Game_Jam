@@ -10,6 +10,7 @@ tileWidth = 320
 dungeonSize = 16
 encounters = 10
 TotalUniqueSections = 6
+posibleEnemies = [ "Rat" ]
 
 [node name="Navigation" type="Navigation2D" parent="."]
 

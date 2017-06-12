@@ -6,6 +6,8 @@ export(int) var dungeonSize = 16
 export(int) var encounters = 10
 export(int) var TotalUniqueSections = 5
 
+export(Array) var posibleEnemies = ["Rat"]
+
 var grid = {}
 var baseTiles = []
 var openSides = {
@@ -45,31 +47,32 @@ func build_dungeon():
 
 		var possible = get_possible()
 		#pick the possible exit
-		var fromExit = possible[randi()%possible.size()-1]
+		if possible.size() > 0:
+			var fromExit = possible[randi()%possible.size()-1]
 
-		var entranceTo = switch_enter_exit(fromExit)
+			var entranceTo = switch_enter_exit(fromExit)
+	
+			var options = sideOpenList[entranceTo]
 
-		var options = sideOpenList[entranceTo]
-
-		var tile = baseTiles[options[randi()%options.size()-1]].instance()
+			var tile = baseTiles[options[randi()%options.size()-1]].instance()
+			
+			if fromExit == "North":
+				curPos = curPos-Vector2(0,tileHeight)
+			elif fromExit == "South":
+				curPos = curPos+Vector2(0,tileHeight)
+			elif fromExit == "West":
+				curPos = curPos-Vector2(tileWidth,0)
+			elif fromExit == "East":
+				curPos = curPos+Vector2(tileWidth,0)
+			tile.set_pos(curPos)
 		
-		if fromExit == "North":
-			curPos = curPos-Vector2(0,tileHeight)
-		elif fromExit == "South":
-			curPos = curPos+Vector2(0,tileHeight)
-		elif fromExit == "West":
-			curPos = curPos-Vector2(tileWidth,0)
-		elif fromExit == "East":
-			curPos = curPos+Vector2(tileWidth,0)
-		tile.set_pos(curPos)
-		
-		get_node("Navigation").add_child(tile)
+			get_node("Navigation").add_child(tile)
 
-		tile.row = floor(curPos.y/tileHeight)
-		tile.col = floor(curPos.x/tileWidth)
-		grid[str(tile.col)+'-'+str(tile.row)] = tile
+			tile.row = floor(curPos.y/tileHeight)
+			tile.col = floor(curPos.x/tileWidth)
+			grid[str(tile.col)+'-'+str(tile.row)] = tile
 		
-		get_open_sides(tile)
+			get_open_sides(tile)
 		i += 1
 	
 	var extents = {
@@ -117,11 +120,12 @@ func build_dungeon():
 	
 	i = 0
 	while i < encounters:
-		var loci = possEncounter[randi()%possEncounter.size()-1]
+		if possEncounter.size() > 0:
+			var loci = possEncounter[randi()%possEncounter.size()-1]
 		
-		grid[loci].hasEnemy = true
+			grid[loci].hasEnemy = true
 		
-		possEncounter.erase(loci)
+			possEncounter.erase(loci)
 		
 		i += 1
 		

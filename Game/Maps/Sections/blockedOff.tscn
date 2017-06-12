@@ -15,7 +15,6 @@ openNorth = false
 openWest = false
 openEast = false
 openSouth = false
-hasEnemy = false
 
 [node name="Background" type="Sprite" parent="."]
 

@@ -15,6 +15,7 @@ extents = Vector2( 6.33423, 5.23325 )
 
 script/script = ExtResource( 1 )
 speed = 2.0
+XP = 1
 
 [node name="PlayerMovementBody" type="KinematicBody2D" parent="."]
 
@@ -63,20 +64,37 @@ playback/speed = 1.0
 
 [node name="Data" parent="Units" instance=ExtResource( 2 )]
 
+maxPSU = 18
+CPU = 10
+maxRam = 20
+PrimaryAbility = "Strike"
+
 [node name="Sprite" parent="Units/Data/UnitBody"]
 
+transform/scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 
 [node name="Pentium" parent="Units" instance=ExtResource( 2 )]
 
+maxPSU = 20
+CPU = 18
+maxRam = 16
+PrimaryAbility = "Strike"
+
 [node name="Sprite" parent="Units/Pentium/UnitBody"]
 
+transform/scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 4 )
 
 [node name="Mobo" parent="Units" instance=ExtResource( 2 )]
 
+maxPSU = 30
+CPU = 8
+maxRam = 16
+
 [node name="Sprite" parent="Units/Mobo/UnitBody"]
 
+transform/scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 5 )
 
 [node name="MovementTween" type="Tween" parent="."]
