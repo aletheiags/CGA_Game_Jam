@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://Maps/Grid.gd" type="Script" id=1]
+
+[node name="Dungon" type="Node2D"]
+
+script/script = ExtResource( 1 )
+tileHeight = 320
+tileWidth = 320
+dungeonSize = 16
+encounters = 10
+TotalUniqueSections = 6
+posibleEnemies = [ "Rat" ]
+
+[node name="Navigation" type="Navigation2D" parent="."]
+
+[node name="StartPoint" type="Position2D" parent="."]
+
+transform/pos = Vector2( 160, 160 )
+
+[node name="Transitions" type="Node" parent="."]
+
+

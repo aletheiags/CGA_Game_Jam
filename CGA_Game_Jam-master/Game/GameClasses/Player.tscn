@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://GameClasses/Player.gd" type="Script" id=1]
+[ext_resource path="res://Actors/Units/PlayerUnit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Images/Sprites/Data.png" type="Texture" id=3]
+[ext_resource path="res://Images/Sprites/Pentium.png" type="Texture" id=4]
+[ext_resource path="res://Images/Sprites/MOBO.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.33423, 5.23325 )
+
+[node name="Player" type="Node"]
+
+script/script = ExtResource( 1 )
+speed = 2.0
+XP = 1
+
+[node name="PlayerMovementBody" type="KinematicBody2D" parent="."]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMovementBody"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Camera2D" type="Camera2D" parent="PlayerMovementBody"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/smoothed = false
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = true
+smoothing/speed = 10.0
+drag_margin/left = 0.01
+drag_margin/top = 0.01
+drag_margin/right = 0.01
+drag_margin/bottom = 0.01
+
+[node name="CameraTween" type="Tween" parent="PlayerMovementBody/Camera2D"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="Units" type="Node" parent="."]
+
+[node name="Data" parent="Units" instance=ExtResource( 2 )]
+
+maxPSU = 18
+CPU = 10
+maxRam = 20
+PrimaryAbility = "Strike"
+
+[node name="Sprite" parent="Units/Data/UnitBody"]
+
+transform/scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
+
+[node name="Pentium" parent="Units" instance=ExtResource( 2 )]
+
+maxPSU = 20
+CPU = 18
+maxRam = 16
+PrimaryAbility = "Strike"
+
+[node name="Sprite" parent="Units/Pentium/UnitBody"]
+
+transform/scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+
+[node name="Mobo" parent="Units" instance=ExtResource( 2 )]
+
+maxPSU = 30
+CPU = 8
+maxRam = 16
+
+[node name="Sprite" parent="Units/Mobo/UnitBody"]
+
+transform/scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="MovementTween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+
+[editable path="Units/Data"]
+[editable path="Units/Pentium"]
+[editable path="Units/Mobo"]

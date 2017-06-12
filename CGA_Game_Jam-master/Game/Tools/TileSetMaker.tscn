@@ -1,0 +1,224 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://Tools/TileSetMaker.gd" type="Script" id=1]
+[ext_resource path="res://Images/Tilesets/testTileset.png" type="Texture" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 31.6696, 31.8035, -31.9813, 31.3763, 31.5272, -32.7018 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 32.1568, -1.2742, 32.1766, 32.0097, -32.0594, 31.7017, -32.0594, -1.11642 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -0.403656, -31.79, -0.561447, 32.1106, -32.1173, 32.1106, -31.8017, -31.9478 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 31.8307, -32.1893, 32.3063, 32.2618, -35.7122, 31.7861, -35.7122, -32.4271 )
+
+[node name="TileSetMaker" type="Node"]
+
+script/script = ExtResource( 1 )
+reset = false
+tileSize = 64
+
+[node name="0" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 32 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="0"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="0/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( 31.5272, -32.7018, -31.9813, 31.3763, 31.6696, 31.8035 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 96, 32 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 64, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="1"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="1/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -32.0594, -1.11642, -32.0594, 31.7017, 32.1766, 32.0097, 32.1568, -1.2742 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 160, 32 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 128, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="2"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="2/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -31.8017, -31.9478, -32.1173, 32.1106, -0.561447, 32.1106, -0.403656, -31.79 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 224, 32 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 192, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="3"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="3/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -35.7122, -32.4271, -35.7122, 31.7861, 32.3063, 32.2618, 31.8307, -32.1893 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 96 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 0, 64, 64, 64 )
+
+[node name="5" type="Sprite" parent="."]
+
+transform/pos = Vector2( 96, 96 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 64, 64, 64, 64 )
+
+[node name="6" type="Sprite" parent="."]
+
+transform/pos = Vector2( 160, 96 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 128, 64, 64, 64 )
+
+[node name="7" type="Sprite" parent="."]
+
+transform/pos = Vector2( 224, 96 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 192, 64, 64, 64 )
+
+[node name="8" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 160 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 0, 128, 64, 64 )
+
+[node name="9" type="Sprite" parent="."]
+
+transform/pos = Vector2( 96, 160 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 64, 128, 64, 64 )
+
+[node name="10" type="Sprite" parent="."]
+
+transform/pos = Vector2( 160, 160 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 128, 128, 64, 64 )
+
+[node name="11" type="Sprite" parent="."]
+
+transform/pos = Vector2( 224, 160 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 192, 128, 64, 64 )
+
+[node name="12" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 224 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 0, 192, 64, 64 )
+
+[node name="13" type="Sprite" parent="."]
+
+transform/pos = Vector2( 96, 224 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 64, 192, 64, 64 )
+
+[node name="14" type="Sprite" parent="."]
+
+transform/pos = Vector2( 160, 224 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 128, 192, 64, 64 )
+
+[node name="15" type="Sprite" parent="."]
+
+transform/pos = Vector2( 224, 224 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 192, 192, 64, 64 )
+
+
