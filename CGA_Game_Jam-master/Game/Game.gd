@@ -32,7 +32,12 @@ func goIntoBattle(unitPositions,enemyPositions,battleArea):
 	get_tree().get_root().get_node("Desktop/Sounds/Dungeon").stop()
 	get_tree().get_root().get_node("Desktop/Sounds/Battle").play()
 	battleLocation = battleArea
-	get_node("Player").goIntoBattle(unitPositions)
+	var pos = battleArea.get_global_pos()
+	
+
+
+	var newPos = Vector2(160,160)+battleArea.get_pos()
+	get_node("Player").goIntoBattle(unitPositions,newPos)
 	
 	for e in enemyPositions:		
 		var eN = enemyList[randi()%enemyList.size()-1]
