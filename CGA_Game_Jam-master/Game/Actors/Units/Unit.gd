@@ -49,7 +49,7 @@ func do_ability(attack,enemy):
 				if roll > mod:
 					mod = roll #this is true of roll is higher than base
 				attackValue = ceil(float(psu*attack.Power*float(float(mod)/100)))
-				enemy.get_hit(attackValue)
+				enemy.get_hit(attackValue, self)
 				ram = attack.RamUsage
 				if ram < 0:
 					psu -= ram
@@ -57,10 +57,22 @@ func do_ability(attack,enemy):
 			else:
 				dodged = true
 		
-		return([dodged,attackValue,reservedUsed])
+		if not dodged:
+			print('Attacking')
+			get_node("AnimationPlayer").play("Attack")
+			get_node("AnimationPlayer").connect("finished",self,"attackDone",[],4)
+		
+		else:
+			get_tree().get_root().get_node("Desktop").dungeonGame.nextUnitsTurnToAttack()
+		#return([dodged,attackValue,reservedUsed])
 
-func get_hit(attackValue):
-	print('I '+get_name()+' was hit for '+str(attackValue))
+func attackDone():
+	print('attack is done')
+	get_tree().get_root().get_node("Desktop").dungeonGame.nextUnitsTurnToAttack()
+
+func get_hit(attackValue,attacker):
+	get_tree().get_root().get_node("Desktop").add_to_output(get_name()+' was hit for '+str(attackValue)+' By '+attacker.get_name())
+	get_node("AnimationPlayer").play("getHit")
 	psu -= attackValue
 	if psu <= 0:
 		die()
@@ -69,9 +81,10 @@ func get_hit(attackValue):
 			get_node("PSU").set_text(str(psu))
 		else:
 			get_node("UnitBody/PSU").set_text(str(psu))
+			get_tree().get_root().get_node("Desktop").set_PSU_vaule(self)
 
 func die():
-	print('I ',get_name(), ' Have died')
+	get_tree().get_root().get_node("Desktop").add_to_output(get_name()+' died')
 	emit_signal("died",self)
 
 ##this is meant to be overwridden

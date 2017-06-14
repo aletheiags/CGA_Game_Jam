@@ -6,7 +6,10 @@
 
 script/script = ExtResource( 1 )
 Power = 1
+AbilityName = null
+RamUsage = null
 AbilityType = "Damage"
 Effect = null
+Icon = null
 
 
