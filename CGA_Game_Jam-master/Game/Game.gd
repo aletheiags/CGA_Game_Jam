@@ -46,11 +46,13 @@ func goIntoBattle(unitPositions,enemyPositions,battleArea):
 	
 	for e in enemyPositions:		
 		var eN = enemyList[randi()%enemyList.size()-1]
+		print(eN)
 		var enemy = get_node("Enemy/"+eN).duplicate(true)
 		enemies.append(enemy)
 		enemy.set_pos(e.get_global_pos())
 		enemy.connect("died",self,"unit_died")
 		add_child(enemy)
+		enemy.show()
 		
 	startBattle()
 
@@ -160,7 +162,10 @@ func setEnemyUnits():
 	for e in enemies:
 		#this should be radomized.. ?
 		e.onTurn.useAbility =get_node("Abilities/Strike")
-		e.onTurn.on = p[randi()%p.size()-1]
+		var u = p[randi()%p.size()-1]
+		print(u)
+		if typeof(u) != 0:
+			e.onTurn.on = weakref(u)
 
 
 func sort_units(units):

@@ -6,7 +6,7 @@ export(int) var dungeonSize = 16
 export(int) var encounters = 10
 export(int) var TotalUniqueSections = 5
 
-export(Array) var posibleEnemies = ["Rat"]
+export(Array) var posibleEnemies = []
 
 var grid = {}
 var baseTiles = []

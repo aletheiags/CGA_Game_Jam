@@ -30,38 +30,42 @@ signal died
 func doActiveAbility():
 	do_ability(onTurn.useAbility,onTurn.on)
 
-func do_ability(attack,enemy):
+func do_ability(attack,e):
 	if CanAttack:
 		var dodged = false
 		var reservedUsed = 0
 		var attackValue = 0
 		var roll = 0
-		var dodgeChance = ((CPU*0.1-enemy.CPU*0.1)/CPU)*100
-		if  dodgeChance > 0:
-			roll = randi()%100
-			if roll < dodgeChance:
-				dodged = true
+		var enemy = e.get_ref()
+		if (enemy):
+			var dodgeChance = ((CPU*0.1-enemy.CPU*0.1)/CPU)*100
+			if  dodgeChance > 0:
+				roll = randi()%100
+				if roll < dodgeChance:
+					dodged = true
 
 				
-		if not dodged:
-			if enemy.CanBeAttacked:
-				var mod = 40+psu #this is the base
-				if roll > mod:
-					mod = roll #this is true of roll is higher than base
-				attackValue = ceil(float(psu*attack.Power*float(float(mod)/100)))
-				enemy.get_hit(attackValue, self)
-				ram = attack.RamUsage
-				if ram < 0:
-					psu -= ram
-					ram = 0
+			if not dodged:
+				if enemy.CanBeAttacked:
+					var mod = 40+psu #this is the base
+					if roll > mod:
+						mod = roll #this is true of roll is higher than base
+					attackValue = ceil(float(psu*attack.Power*float(float(mod)/100)))
+					enemy.get_hit(attackValue, self)
+					ram = attack.RamUsage
+					if ram < 0:
+						psu -= ram
+						ram = 0
+				else:
+					dodged = true
+		
+			if not dodged:
+				print('Attacking')
+				get_node("AnimationPlayer").play("Attack")
+				get_node("AnimationPlayer").connect("finished",self,"attackDone",[],4)
+		
 			else:
-				dodged = true
-		
-		if not dodged:
-			print('Attacking')
-			get_node("AnimationPlayer").play("Attack")
-			get_node("AnimationPlayer").connect("finished",self,"attackDone",[],4)
-		
+				get_tree().get_root().get_node("Desktop").dungeonGame.nextUnitsTurnToAttack()
 		else:
 			get_tree().get_root().get_node("Desktop").dungeonGame.nextUnitsTurnToAttack()
 		#return([dodged,attackValue,reservedUsed])
