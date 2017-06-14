@@ -27,6 +27,7 @@ var blocked = []
 
 var cameFrom = "none"
 
+var encounterCount = 0
 
 func _ready():
 	setup()
@@ -124,7 +125,7 @@ func build_dungeon():
 			var loci = possEncounter[randi()%possEncounter.size()-1]
 		
 			grid[loci].hasEnemy = true
-		
+			encounterCount += 1
 			possEncounter.erase(loci)
 		
 		i += 1

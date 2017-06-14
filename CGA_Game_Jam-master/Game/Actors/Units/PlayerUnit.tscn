@@ -13,12 +13,22 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("UnitBody/Sprite:transform/pos")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.45, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 0, 0 ), Vector2( 5.00689, -1.84464 ), Vector2( -2.04736, 0.324328 ), Vector2( 0, 0 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.15, 0.45, 0.8 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5.00689, -1.84464 ), Vector2( -2.04736, 0.324328 ), Vector2( 0, 0 ) ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("UnitBody/Sprite:transform/rot")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 0.15, 0.45, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, -14.05, 7.85791, 0.0 ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 0.15, 0.45, 0.8 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -14.05, 7.85791, 0.0 ]
+}
 
 [sub_resource type="Animation" id=2]
 
@@ -30,7 +40,12 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("UnitBody/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6, 0.85 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ 0, 1, 2, 3, 0 ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.2, 0.4, 0.6, 0.85 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0 ]
+}
 
 [sub_resource type="Animation" id=3]
 
@@ -46,20 +61,35 @@ length = 0.8
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("UnitBody/Sprite:modulate")
+tracks/0/path = NodePath("UnitBody/Sprite:transform/pos")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.3, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.4, 0.8 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -2.63521, 0 ), Vector2( 0, 0 ) ]
+}
 tracks/1/type = "value"
-tracks/1/path = NodePath("UnitBody/Sprite:transform/pos")
+tracks/1/path = NodePath("UnitBody/Sprite:transform/rot")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 0.4, 0.8 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ Vector2( 0, 0 ), Vector2( -2.63521, 0 ), Vector2( 0, 0 ) ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 0.4, 0.8 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 18.5604, 0.0 ]
+}
 tracks/2/type = "value"
-tracks/2/path = NodePath("UnitBody/Sprite:transform/rot")
+tracks/2/path = NodePath("Particles2D:config/emitting")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.4, 0.8 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 18.5604, 0.0 ] }
+tracks/2/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Unit" type="Node"]
 
@@ -119,5 +149,31 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+
+[node name="Particles2D" type="Particles2D" parent="."]
+
+transform/pos = Vector2( -0.794434, -8.34151 )
+config/amount = 120
+config/lifetime = 1.0
+config/emitting = false
+config/process_mode = 1
+config/explosiveness = 0.73
+params/direction = 144.0
+params/spread = 180.0
+params/linear_velocity = 20.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 0, 1, 1, 1 )
 
 

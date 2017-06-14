@@ -77,6 +77,7 @@ func attackDone():
 func get_hit(attackValue,attacker):
 	get_tree().get_root().get_node("Desktop").add_to_output(get_name()+' was hit for '+str(attackValue)+' By '+attacker.get_name())
 	get_node("AnimationPlayer").play("getHit")
+	get_tree().get_root().get_node("Desktop/Sounds/Hit").play("hitSND")
 	psu -= attackValue
 	if psu <= 0:
 		die()

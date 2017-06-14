@@ -11,6 +11,7 @@ func set_ability(_ability):
 func activate_ability():
 	get_tree().get_root().get_node("Desktop").activate_ability(ability)
 	get_node("selected").show()
+	get_tree().get_root().get_node("Desktop/Sounds/Click").play("clickSND")
 
 func _ready():
 	connect("pressed", self,"activate_ability")

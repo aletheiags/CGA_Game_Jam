@@ -4,6 +4,7 @@ var battleLocation
 var dungon
 var enemyList = []
 
+var battlesLeft = 1
 #battle
 var enemies = []
 var order = []
@@ -12,6 +13,8 @@ var xpForBattle = 0
 var turnDone = false
 
 var unitTurn = 0
+
+var level = 0
 
 var inBattle = false
 func loadScene(scenename, spawnpoint):
@@ -30,6 +33,9 @@ func loadScene(scenename, spawnpoint):
 	
 	for c in get_node("Player/Units").get_children():
 		c.connect("died",self,"unit_died")
+	
+	battlesLeft = scene.encounterCount
+	print(battlesLeft)
 	
 func goIntoBattle(unitPositions,enemyPositions,battleArea):
 	inBattle = true
@@ -70,6 +76,9 @@ func battleWon():
 	print('I won the battle')
 	get_node("Player").XP += xpForBattle
 	endBattle()
+	battlesLeft -= 1
+	if battlesLeft == 0:
+		get_tree().get_root().get_node("Desktop").doVictory()
 	
 
 func endBattle():

@@ -22,7 +22,12 @@ func setOnPlayer(unit):
 		print(dungeonGame.get_node("Abilities/"+unit.PrimaryAbility))
 		get_node("TurnWindow/Ability1").set_ability(dungeonGame.get_node("Abilities/"+unit.PrimaryAbility))
 	
-	
+
+func doVictory():
+	get_node("GameWindow").hide()
+	get_node("GameWindowBorder").hide()
+	get_node("Victory").show()
+	get_node("Victory/AnimationPlayer").play("grow")
 	
 
 func activate_ability(ability):
